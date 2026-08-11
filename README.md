@@ -1,24 +1,20 @@
 # Portal de Indicadores de Ventas — Bocadeli
 
-Página estática (Material Design 3) que muestra un reporte de Power BI por mes. Pensada para subir directo a **GitHub Pages**.
+Página estática (Material Design 3) que muestra un reporte de Power BI por mes. Estructura **plana, sin subcarpetas**, para poder subir todos los archivos de una sola vez a GitHub.
 
-## Estructura de archivos
+## Archivos
 
 ```
-portal-ventas/
-├── index.html          ← estructura de la página (no necesitas tocarlo)
-├── css/
-│   └── styles.css       ← estilos Material Design (no necesitas tocarlo)
-├── js/
-│   └── app.js            ← lógica que dibuja las tarjetas (no necesitas tocarlo)
-├── data/
-│   └── meses.json         ← 👉 EL ÚNICO ARCHIVO QUE EDITAS
-└── README.md
+index.html      ← estructura de la página (no necesitas tocarlo)
+styles.css      ← estilos Material Design (no necesitas tocarlo)
+app.js          ← lógica que dibuja las tarjetas (no necesitas tocarlo)
+meses.json      ← 👉 EL ÚNICO ARCHIVO QUE EDITAS
+README.md
 ```
 
 ## Cómo agregar o actualizar un mes
 
-Abre `data/meses.json`. Cada mes es un bloque así:
+Abre `meses.json`. Cada mes es un bloque así:
 
 ```json
 {
@@ -36,36 +32,28 @@ Abre `data/meses.json`. Cada mes es un bloque así:
 
 Para agregar un mes nuevo, copia un bloque completo dentro de `"reportes": [ ... ]`, sepáralo con una coma y edítalo. El orden del arreglo es el orden en que se muestran las tarjetas.
 
-También puedes cambiar el año mostrado editando `"anio": 2026` arriba del archivo.
+## Cómo subir esto a GitHub (sin carpetas)
 
-### Cómo obtener el link de Power BI
-
-En tu reporte, ve a **Archivo → Insertar reporte → Publicar en la web**, genera el enlace y pega esa URL en `"link"`.
-
-## Publicar en GitHub Pages
-
-1. Crea un repositorio en GitHub (puede ser público o privado con GitHub Pro/Team/Enterprise).
-2. Sube todos estos archivos manteniendo la misma estructura de carpetas.
-3. Ve a **Settings → Pages**, y en "Branch" selecciona `main` (o la rama donde subiste los archivos) y carpeta `/ (root)`.
-4. Espera 1–2 minutos y tu página quedará publicada en:
+1. Crea un repositorio nuevo en GitHub.
+2. Dentro del repo, click en **Add file → Upload files**.
+3. Selecciona los 4 archivos (`index.html`, `styles.css`, `app.js`, `meses.json`) **a la vez** — puedes arrastrarlos juntos o usar "choose your files" y seleccionarlos con Ctrl/Cmd click. Como no hay subcarpetas, no necesitas arrastrar ninguna carpeta.
+4. Click en **Commit changes**.
+5. Ve a **Settings → Pages**, en "Branch" selecciona `main` y carpeta `/ (root)`.
+6. En 1–2 minutos tu página estará en:
    `https://tu-usuario.github.io/nombre-del-repo/`
 
-## Sobre la caché (para que los cambios se vean al instante)
+## Editar los meses después, sin descargar nada
 
-Ya está resuelto en el código, pero por si te interesa saber qué se hizo:
-
-- `index.html` incluye metaetiquetas `Cache-Control: no-cache` para que el navegador no guarde la página en caché.
-- `js/app.js` pide `data/meses.json` con `cache: "no-store"` y le agrega `?v=<hora actual>` a la URL, así el navegador **siempre** trae la versión más reciente del archivo en lugar de una guardada.
-
-**Nota sobre GitHub Pages:** GitHub Pages usa una CDN (Fastly) que a veces tarda **hasta unos minutos** en reflejar un cambio recién subido, incluso con estas medidas — es una capa fuera del control del código. Si haces un cambio y no lo ves de inmediato, espera 1–2 minutos y recarga con Ctrl+Shift+R (o Cmd+Shift+R en Mac) una vez.
-
-## Editar los meses sin usar GitHub directamente
-
-Si no quieres clonar el repo cada vez:
-
-1. En GitHub, entra a `data/meses.json` dentro de tu repositorio.
+1. En GitHub, entra a `meses.json` dentro de tu repositorio.
 2. Click en el ícono de lápiz (✏️) "Edit this file".
 3. Agrega o edita el mes que necesites.
-4. Click en **"Commit changes"**.
+4. Click en **Commit changes**.
 
-Eso es todo — la página se actualiza sola en 1–2 minutos.
+La página se actualiza sola en 1–2 minutos (GitHub Pages usa una CDN que a veces tarda un poco en reflejar el cambio).
+
+## Probarlo en tu computadora antes de subirlo
+
+Si abres `index.html` haciendo doble clic, vas a ver un error de carga — es porque los navegadores bloquean que la página lea `meses.json` cuando se abre directo desde el disco (`file://`). Para probarlo local:
+
+- En VS Code, instala la extensión **Live Server**, clic derecho sobre `index.html` → "Open with Live Server".
+- O simplemente sube los archivos a GitHub Pages y pruébalo ahí — ahí sí funciona sin configurar nada.

@@ -1,0 +1,278 @@
+/* ============================================================
+   Portal de Indicadores de Ventas — Bocadeli
+   Sistema de diseño: Material Design 3 (tokens propios de marca)
+   ============================================================ */
+
+:root{
+  /* ---- color tokens (Material 3 style) ---- */
+  --md-primary: #9C4A2E;
+  --md-on-primary: #FFFFFF;
+  --md-primary-container: #FFDBCB;
+  --md-on-primary-container: #3A0C00;
+
+  --md-secondary: #5C6B34;
+  --md-secondary-container: #DCE8B4;
+
+  --md-surface: #FFFBF7;
+  --md-surface-dim: #E7E0D9;
+  --md-surface-container: #F4EEE6;
+  --md-surface-container-high: #EEE6DC;
+  --md-on-surface: #211A14;
+  --md-on-surface-variant: #52443A;
+
+  --md-outline: #85756A;
+  --md-outline-variant: #D7C7B9;
+
+  --md-elevation-1: 0 1px 2px rgba(33,26,20,.10), 0 1px 3px 1px rgba(33,26,20,.08);
+  --md-elevation-2: 0 1px 2px rgba(33,26,20,.10), 0 2px 6px 2px rgba(33,26,20,.10);
+  --md-elevation-3: 0 4px 8px rgba(33,26,20,.12), 0 1px 3px rgba(33,26,20,.14);
+
+  --md-shape-lg: 20px;
+  --md-shape-md: 14px;
+  --md-shape-sm: 10px;
+
+  /* estado (mes -> color de acento) */
+  --acc-terracotta: #9C4A2E;
+  --acc-azul: #3B5E82;
+  --acc-morado: #6B4A80;
+  --acc-verde: #4E6B34;
+  --acc-mostaza: #A47B1E;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  background: var(--md-surface-dim);
+  color: var(--md-on-surface);
+  min-height: 100vh;
+}
+
+/* ---------------- Top App Bar ---------------- */
+.top-bar{
+  background: var(--md-surface);
+  box-shadow: var(--md-elevation-1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.top-bar-inner{
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.top-bar-icon{
+  width: 44px; height: 44px;
+  border-radius: var(--md-shape-md);
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+  display: flex; align-items: center; justify-content: center;
+  flex: none;
+}
+.top-bar-icon .material-symbols-outlined{ font-size: 24px; }
+
+.top-bar-text .app-title{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: .01em;
+}
+.top-bar-text .app-subtitle{
+  font-size: 13px;
+  color: var(--md-on-surface-variant);
+  margin: 2px 0 0;
+}
+
+/* ---------------- Hero / header section ---------------- */
+.hero{
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px 24px 8px;
+}
+.hero-eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--md-secondary);
+  background: var(--md-secondary-container);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.hero h1{
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 400;
+  margin: 16px 0 6px;
+  line-height: 1.2;
+}
+.hero p{
+  font-size: 15px;
+  color: var(--md-on-surface-variant);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---------------- Grid ---------------- */
+main{
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 24px 80px;
+}
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* ---------------- Card ---------------- */
+.card{
+  --acc: var(--acc-terracotta);
+  position: relative;
+  display: block;
+  background: var(--md-surface);
+  border-radius: var(--md-shape-lg);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--md-elevation-1);
+  transition: box-shadow .18s ease, transform .18s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+.card::before{
+  /* state layer for hover/focus, Material Design style */
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--acc);
+  opacity: 0;
+  transition: opacity .15s ease;
+  z-index: -1;
+}
+.card.filled{ cursor: pointer; }
+.card.filled:hover{
+  box-shadow: var(--md-elevation-2);
+  transform: translateY(-2px);
+}
+.card.filled:hover::before{ opacity: .06; }
+.card.filled:focus-visible{
+  outline: 3px solid var(--acc);
+  outline-offset: 2px;
+}
+.card.filled:active::before{ opacity: .10; }
+
+.card.empty{
+  cursor: default;
+  box-shadow: none;
+  background: transparent;
+  border: 1.5px dashed var(--md-outline-variant);
+}
+
+.card-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.card-icon{
+  width: 40px; height: 40px;
+  border-radius: var(--md-shape-sm);
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--acc) 16%, white);
+  color: var(--acc);
+  flex: none;
+}
+.card.empty .card-icon{
+  background: var(--md-surface-container);
+  color: var(--md-outline);
+}
+.card-icon .material-symbols-outlined{ font-size: 22px; }
+
+.card-index{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--md-outline);
+}
+
+.card-month{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 2px;
+}
+.card-status{
+  font-size: 13px;
+  color: var(--md-on-surface-variant);
+  margin: 0 0 18px;
+}
+.card.filled .card-status{ color: var(--acc); font-weight: 500; }
+
+.card-action{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--acc);
+}
+.card.empty .card-action{
+  color: var(--md-outline);
+  font-style: italic;
+  font-weight: 400;
+}
+.card-action .material-symbols-outlined{
+  font-size: 18px;
+  transition: transform .15s ease;
+}
+.card.filled:hover .card-action .material-symbols-outlined{ transform: translateX(3px); }
+
+/* accent colors per month */
+.card.acc-terracotta{ --acc: var(--acc-terracotta); }
+.card.acc-azul{ --acc: var(--acc-azul); }
+.card.acc-morado{ --acc: var(--acc-morado); }
+.card.acc-verde{ --acc: var(--acc-verde); }
+.card.acc-mostaza{ --acc: var(--acc-mostaza); }
+
+/* ---------------- Loading / error states ---------------- */
+.status-banner{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--md-shape-md);
+  background: var(--md-surface-container);
+  color: var(--md-on-surface-variant);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.status-banner.error{
+  background: #FFDAD4;
+  color: #410002;
+}
+
+footer{
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--md-outline);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .card{ transition: none; }
+  .card-action .material-symbols-outlined{ transition: none; }
+}
+
+@media (max-width: 420px){
+  .grid{ grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card{ padding: 16px; }
+  .card-top{ margin-bottom: 18px; }
+}

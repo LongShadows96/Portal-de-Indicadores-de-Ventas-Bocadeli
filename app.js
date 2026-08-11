@@ -19,7 +19,7 @@ async function cargarDatos() {
     // la versión más reciente de meses.json, nunca una guardada
     // en caché. Así, cuando edites el JSON en GitHub, el cambio
     // se refleja de inmediato para cualquiera que abra la página.
-    const url = `data/meses.json?v=${Date.now()}`;
+    const url = `meses.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
 
     if (!res.ok) throw new Error(`No se pudo cargar meses.json (${res.status})`);
@@ -32,7 +32,7 @@ async function cargarDatos() {
     banner.classList.add("error");
     banner.innerHTML = `
       <span class="material-symbols-outlined">error</span>
-      <span>No se pudieron cargar los reportes. Revisa que data/meses.json exista y tenga un formato válido.</span>
+      <span>No se pudieron cargar los reportes. Revisa que meses.json exista y tenga un formato válido.</span>
     `;
     console.error(err);
   }
