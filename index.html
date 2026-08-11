@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Evita que el navegador guarde esta página en caché -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<title>Portal de Indicadores de Ventas · Bocadeli</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<link rel="stylesheet" href="css/styles.css?v=1">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-icon">
+      <span class="material-symbols-outlined">storefront</span>
+    </span>
+    <div class="top-bar-text">
+      <p class="app-title">Bocadeli</p>
+      <p class="app-subtitle">Portal de indicadores de ventas</p>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-eyebrow">
+    <span class="material-symbols-outlined" style="font-size:16px;">calendar_month</span>
+    <span id="year-label">2026</span>
+  </span>
+  <h1>Reportes de ventas</h1>
+  <p>Seguimiento histórico de resultados comerciales. Selecciona un mes para abrir su reporte de Power BI.</p>
+</section>
+
+<main>
+  <div class="status-banner" id="status-banner" hidden></div>
+  <div class="grid" id="grid">
+    <!-- Las tarjetas de cada mes se generan automáticamente
+         a partir de data/meses.json — no edites este bloque. -->
+  </div>
+</main>
+
+<footer>Bocadeli · Actualizado automáticamente desde data/meses.json</footer>
+
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
