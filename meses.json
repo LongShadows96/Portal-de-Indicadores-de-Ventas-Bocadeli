@@ -41,6 +41,11 @@
       "mes": "Julio",
       "color": "azul",
       "link": "https://app.powerbi.com/view?r=eyJrIjoiMTUzNjAxZDktNDhkZC00ZDVmLWE4ZjQtNmFjYWUwNWU4OWIxIiwidCI6IjU2NWI0ODQ0LWUxY2QtNGZlZS04N2Q3LTNjOWVmMzI0YzVmNCJ9&pageName=ReportSection81338c6f7e0a5172c69d"
+    },
+    {
+      "mes": "Agosto",
+      "color": "terracotta",
+      "link": null
     }
   ]
 }
